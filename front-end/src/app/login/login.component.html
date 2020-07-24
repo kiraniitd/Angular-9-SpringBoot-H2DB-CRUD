@@ -1,0 +1,66 @@
+<h1 align='center'><u>CRUD: Angular-Spring Boot-DataBase Flow</u></h1>
+<fieldset class="input-creator">
+    <legend>POST</legend>
+<div>
+    <form [formGroup]="ruleForm" (ngSubmit)="doAdd()"> <h2> <u> POST Request </u></h2>
+       <!-- <div class="form-group row"  formArrayName="arr" *ngFor="let a of ruleForm.get('arr')['controls']; let i = index" formGroupName="{{i}}"> -->
+        <!--<div class="form-group row" formArrayName="credentials" *ngFor="let creds of ruleForm.get('credentials')['controls']; let i = index" 
+        [formGroupName]="i" style="display: flex">
+        <div class="form-group row" > 
+            <div class="form-group row"  formArrayName="credentials" *ngFor="let cred of ruleForm.get('credentials')['controls']; let i=index"             
+            [formGroupName]="i"> {{i}} -->
+            <div class="form-group row" > 
+            <label for="math"><b>Math :</b></label>
+            <select formControlName="math"  required>
+                <option *ngFor="let math of maths" [value]="math.id">
+                    {{ math.name }}
+                </option>
+            </select>
+            <input type="text" class="form-control" formControlName="math1" (keydown.space)="$event.preventDefault()" required>                
+        </div>  
+        <div class="form-row">            
+            <p-button  type="submit" label='Add'></p-button>
+        </div>        
+    </form>      
+</div>
+
+<div>
+    <form [formGroup]="submitRuleForm" (ngSubmit)="onSubmit()">
+        <h3>Form data</h3>
+        <div *ngIf="payLoad" class="form-row">
+        <!-- <pre>{{payLoad | json}}</pre> -->
+        <pre>{{listOfRules | json}}</pre>
+        <div class="form-row">
+            <p-button  type="submit" label='Save'></p-button>
+        </div>         
+        </div> 
+    </form>
+</div>
+</fieldset>
+
+
+<fieldset class="input-creator">
+    <legend>GET</legend>
+<div>
+    <form [formGroup]="loginForm" (ngSubmit)="doGetRequest()"> <h2> <u> GET Request </u></h2>
+        <div class="form-row">
+            <p-button class="action-button low-button" type="submit" label='Get Request'></p-button>
+        </div>        
+    </form>      
+</div>
+</fieldset>
+
+<fieldset class="input-creator">
+    <legend>DELETE</legend>
+<div>
+    <form [formGroup]="ruleForm" (ngSubmit)="doDelete()"> <h2> <u> DELETE Request </u></h2>
+        <div class="form-row">
+            <label for="ruleNumber"><b>Rule Number :</b></label>
+            <input type="text" class="form-control" formControlName="ruleNumber" (keydown.space)="$event.preventDefault()" required>
+            <div class="form-row">
+            <p-button class="action-button low-button" type="submit" label='Delete Request'></p-button>
+            </div>
+        </div>        
+    </form>      
+</div>
+</fieldset>

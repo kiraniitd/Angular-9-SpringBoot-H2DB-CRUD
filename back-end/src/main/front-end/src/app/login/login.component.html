@@ -1,0 +1,54 @@
+<div class="card-body" style="background-image: url('../../assets/images/background.png');display:flex; align-items:center; justify-content:center; height:100%">
+    <p-panel >         
+        <p-header>
+            <div class="ui-helper-clearfix"  style="display:flex; align-items:center; justify-content:center; height:100%">
+                <span class="ui-panel-title"><h1>CAS Login</h1></span>   
+            </div>
+            <div class="card" style="display:flex; align-items:center; justify-content:center; height:100%">
+            <span class="fa-stack fa-2x hidden-xs" >
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+              </span>
+            </div>
+        </p-header>
+<form [formGroup]="loginForm" (ngSubmit)="doLogin()"> <h2> Enter your Username and Password </h2>
+        <div class="form-group row">
+            <div class="ui-inputgroup">                      
+                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span> 
+                <input pInputText type="text" class="form-control" formControlName="userName" class="ng-dirty ng-invalid" (keydown.space)="$event.preventDefault()" required>                
+            </div>
+        </div>
+        <div *ngIf="loginForm.controls['userName'].invalid && (loginForm.controls['userName'].dirty || loginForm.controls['userName'].touched)"class="alert alert-danger">
+            <div *ngIf="loginForm.controls['userName'].errors.required" style="margin-top:5px">
+                <p style ="color: red">Username is required</p>
+            </div>
+        </div>
+        <br/>
+         <div class="form-group row">
+            <div class="ui-inputgroup">                                
+                <span class="ui-inputgroup-addon"><i class="fa fa-lock"></i></span> 
+                <input pInputText type="password" class="form-control" formControlName="password"  class="ng-dirty ng-invalid" (keydown.space)="$event.preventDefault()" required>
+            </div>
+        </div>
+        <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="alert alert-danger">
+            <div *ngIf="loginForm.controls['password'].errors.required" style="margin-top:5px">
+              <p style ="color: red">Password is required</p>
+            </div>
+        </div>
+    <br/>
+    <div  *ngIf="errorMessage" class="alert alert-warning">
+        <p style ="color: red; display:flex; align-items:center; justify-content:center; height:100%"> <strong>{{errorMessage}} </strong></p>
+    </div>
+    <br/>
+        <div  style="display:flex; align-items:center; justify-content:center; height:100%">            
+        <p-button class="action-button low-button" label="Login">
+        </p-button>
+    </div>
+  </form>
+  </p-panel>
+</div>  
+
+
+
+
+  
